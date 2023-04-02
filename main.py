@@ -1,10 +1,11 @@
-from pydantic import BaseModel
-from modules.rpn_calculator_console.rpn_calculator import *
-from pymongo import MongoClient
-from fastapi import FastAPI
-from datetime import datetime
+import csv
 import settings
-import urllib.parse
+from io import StringIO
+from datetime import datetime
+from pymongo import MongoClient
+from fastapi import FastAPI, Response
+from modules.rpn_calculator_console.rpn_calculator import *
+
 
 
 app = FastAPI()
@@ -43,3 +44,33 @@ def compute_rpn(tokens: dict):
     rpn_collection.insert_one({"date_time": date_time, "rpn": tokens["tokens"], "infix": infix, "result": result})
 
     return {"date_time": date_time, "rpn": tokens["tokens"], "infix": infix, "result": result}
+
+
+@app.get("/operations")
+def get_operations():
+    '''
+    Returns all operations in the database as CSV format.
+
+    Returns:
+        response (Response): Response object with csv data and headers
+    '''
+    # Get all operations from mongo
+    operations = rpn_collection.find()
+    # Create a StringIO object to write the CSV data to
+    csv_output = StringIO()
+    # Create a csv writer object
+    writer = csv.writer(csv_output)
+    # Write the headers
+    writer.writerow(['date_time', 'rpn', 'infix', 'result'])
+    # Loop through the operations and write each row to the csv
+    for op in operations:
+        writer.writerow([op['date_time'], op['rpn'], op['infix'], op['result']])
+    # Get the csv data as a string
+    csv_data = csv_output.getvalue()
+    # Set the content type header
+    headers = {
+        'Content-Type': 'text/csv',
+        'Content-Disposition': 'attachment; filename="operations.csv"'
+    }
+    # Return the response object with the csv data and headers
+    return Response(content=csv_data, headers=headers)
