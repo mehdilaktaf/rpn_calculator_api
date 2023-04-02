@@ -17,21 +17,33 @@ What we normally use to write this equation is called the ***infix notation***, 
 The goal of this API is to take in a RPN equation and compute it to give a result.
 You will also see the current time when calling the API, infix notation and of course the result.
 
+## Requirements
+
+Now that I explained the RPN and goal of this application, here are the steps to follow to use this API:
+
+* First you will need to install all the requirements by lauching the following command:
+
+    ### **`pip install requirements.txt`**
+
+* Then you need to replace **`<database>`** and **`<uri>`** inside of **`docker-compose.yml`**.
+
+* You also need to add a  **`settings.py`** file in the project root and add the following variables:
+
+    ### ** `MONGODB_URI = "your mongo db uri"`**  
+    ### ** `MONGODB_DB =  "your database"`** 
+    ### ** `MONGODB_COLLECTION = "your collection"`** 
+
+* Once this is done, you should be able to launche the uvicorn server using either:
+
+    ### **`uvicorn main:app --reload`**
+
+    ## or
+
+    ### **`docker-compose up`**
+ 
+
 ## Usage
 
-Now that I explained the RPN and goal of this application, here is how to use it:
+Finally you can access the launched API documentation to see all the routes you can use:
 
-*First you will need to install all the requirements by lauching the following command:*
-
-### **`pip install requirements.txt`**
-
-*Once this is done, you should be able to launche the uvicorn server using the next command line.*
-
-### **`uvicorn main:app --reload`**
-
-*Finally you can access the launched API to enter an equation and get the result by using Postman or using this command line:*
-
-
-### **`curl -X POST -H "Content-Type: application/json" -d "{\"tokens\":\"equation\"}" http://localhost:8000/rpn/`**
-
-*Where {equation} is a valid RPN equation.*
+### **`http://127.0.0.1/docs`**
