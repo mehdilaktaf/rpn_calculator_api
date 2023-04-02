@@ -29,9 +29,9 @@ Now that I explained the RPN and goal of this application, here is how to use it
 
 ### **`uvicorn main:app --reload`**
 
-*Finally you can access the launched API to enter an equation and get the result by going on this address:*
+*Finally you can access the launched API to enter an equation and get the result by using this command line:*
 
 
-### **`http://127.0.0.1:8000/rpn/{equation}`**
+### **`curl -X POST -H "Content-Type: application/json" -d "{\"tokens\":\"equation\"}" http://localhost:8000/rpn/`**
 
 *Where {equation} is a valid RPN equation.*
