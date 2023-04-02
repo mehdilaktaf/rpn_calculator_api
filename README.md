@@ -29,21 +29,21 @@ Now that I explained the RPN and goal of this application, here are the steps to
 
 * You also need to add a  **`settings.py`** file in the project root and add the following variables:
 
-    ### ** `MONGODB_URI = "your mongo db uri"`**  
-    ### ** `MONGODB_DB =  "your database"`** 
-    ### ** `MONGODB_COLLECTION = "your collection"`** 
+    ###  `MONGODB_URI = "your mongo db uri"`
+    ###  `MONGODB_DB =  "your database"`
+    ###  `MONGODB_COLLECTION = "your collection"`
 
 * Once this is done, you should be able to launch the server using either:
 
-    ### **`uvicorn main:app --reload`**
+    ### `uvicorn main:app --reload`
 
     ## or
 
-    ### **`docker-compose up`**
+    ### `docker-compose up`
  
 
 ## Usage
 
 Finally, you can access the launched API documentation to see all the routes you can use:
 
-### **`http://127.0.0.1/docs`**
+### `http://127.0.0.1/docs`
