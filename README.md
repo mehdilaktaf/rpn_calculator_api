@@ -1,6 +1,6 @@
 # Getting started with RPN Calculator API
 
-This project was created using python and fastapi.
+This project was created using python, fastapi and mongodb.
 
 ## What is RPN ?
 
@@ -21,11 +21,11 @@ You will also see the current time when calling the API, infix notation and of c
 
 Now that I explained the RPN and goal of this application, here are the steps to follow to use this API:
 
-* First you will need to install all the requirements by lauching the following command:
+* First, you will need to install all the requirements by lauching the following command:
 
     ### **`pip install requirements.txt`**
 
-* Then you need to replace **`<database>`** and **`<uri>`** inside of **`docker-compose.yml`**.
+* Then you need to replace **`<database>`** and **`<uri>`** inside **`docker-compose.yml`**.
 
 * You also need to add a  **`settings.py`** file in the project root and add the following variables:
 
@@ -33,7 +33,7 @@ Now that I explained the RPN and goal of this application, here are the steps to
     ### ** `MONGODB_DB =  "your database"`** 
     ### ** `MONGODB_COLLECTION = "your collection"`** 
 
-* Once this is done, you should be able to launche the uvicorn server using either:
+* Once this is done, you should be able to launch the server using either:
 
     ### **`uvicorn main:app --reload`**
 
@@ -44,6 +44,6 @@ Now that I explained the RPN and goal of this application, here are the steps to
 
 ## Usage
 
-Finally you can access the launched API documentation to see all the routes you can use:
+Finally, you can access the launched API documentation to see all the routes you can use:
 
 ### **`http://127.0.0.1/docs`**
