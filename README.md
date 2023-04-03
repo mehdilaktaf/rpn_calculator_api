@@ -29,7 +29,7 @@ Now that I explained the RPN and goal of this application, here are the steps to
 
 * First, you will need to install all the requirements by lauching the following command:
 
-    ### **`pip install requirements.txt`**
+    ### **`pip install -r requirements.txt`**
 <br>
 
 * Then you need to replace **`<database>`** and **`<uri>`** inside **`docker-compose.yml`**.
