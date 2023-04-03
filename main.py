@@ -104,7 +104,7 @@ def get_operations_as_csv():
         response (Response): Response object with csv data and headers
     '''
     # Get all operations from mongo
-    operations = rpn_collection.find()
+    operations = rpn_collection.find().sort("date_time", -1)
     # Create a StringIO object to write the CSV data to
     csv_output = StringIO()
     # Create a csv writer object
