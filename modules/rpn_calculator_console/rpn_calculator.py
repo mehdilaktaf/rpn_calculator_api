@@ -2,7 +2,8 @@ import cProfile
 import operator
 import sys
 
-def rpn_compute(tokens):        
+
+def rpn_compute(tokens):
     '''
     Returns the result of a reverse polish notation calculation.
 
@@ -24,6 +25,10 @@ def rpn_compute(tokens):
     # Get rid of spaces by making tokens into an array
     tokens = tokens.split(" ")
 
+    # Make sure there are at least 3 tokens with at least one operator
+    if len(tokens) < 3 or all(char.isdigit() for char in tokens):
+        raise ValueError("Not a valid RPN calculation")
+
     # Loop through tokens
     for token in tokens:
         # If token is an operator, compute this part of the calculation
@@ -36,6 +41,7 @@ def rpn_compute(tokens):
             stack.append(int(token))
     # Return result
     return stack.pop()
+
 
 def rpn_to_infix(tokens):
     '''
